@@ -1,0 +1,7 @@
+%{ for group_name, hosts in groups ~}
+[${group_name}]
+%{ for h in hosts ~}
+${h.name} ansible_host=${h.network_interface[0].nat_ip_address} fqdn=${h.fqdn}
+%{ endfor ~}
+
+%{ endfor ~}
